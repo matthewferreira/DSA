@@ -10,11 +10,8 @@ def infix_to_postfix(expr: str):
     op_stack = Stack()
     operators = "*/+-()"
     prec = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
-    # print(input_str)
     output = []
     for token in expr:
-        print(token)
-        print(output)
         if token not in operators:
             output.append(token)
         else:
