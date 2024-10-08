@@ -6,25 +6,20 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from stacks.stack import Stack
 
 
-def balance_symbols(test_str: str):
+def decimal_to_binary(num: int):
     """The challenge then is to write an algorithm that will
     read a string of parentheses from left to right and
     decide whether the symbols are balanced."""
     stack = Stack()
-    test_str = test_str.replace(" ", "")
-    for symbol in test_str:
-        if symbol in "({[":
-            stack.push(symbol)
-        else:
-            if stack.is_empty():
-                return False
-            elif not matches(stack.pop(), symbol):
-                return False
-    if stack.is_empty():
-        return True
-    return False
+    if num < 1:
+        return 0
 
-def matches(left, right):
-    lefts = "({["
-    rights = ")}]"
-    return lefts.index(left) == rights.index(right)
+    while num > 0:
+        stack.push(num % 2)
+        num = num // 2
+
+    bin_str = ""
+    while not stack.is_empty():
+        bin_str += str(stack.pop())
+
+    return bin_str
